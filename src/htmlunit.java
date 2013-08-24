@@ -17,10 +17,10 @@ public class htmlunit {
 
 		// Если есть URL, то запрашиваем снимок страницы (вместе с контентом, генерируемым ajax)
 		if (url.length() > 0) {
-			// Используем движок Firefox 3.6 (он совместим с большинством библиотек, например jQuery)
-			WebClient webClient = new WebClient(BrowserVersion.FIREFOX_3_6);
+			// Используем движок Firefox
+			WebClient webClient = new WebClient(BrowserVersion.FIREFOX_17);
 			// Нет необходимости обрабатывать CSS
-			webClient.setCssEnabled(false);
+			webClient.getOptions().setCssEnabled(false);
 			// Ждем, пока отработают ajax-запросы, выполняемые при загрузке страницы
 			webClient.setAjaxController(new NicelyResynchronizingAjaxController());
 			// Запрашиваем и рендерим веб-страницу

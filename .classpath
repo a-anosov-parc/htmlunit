@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/home/andy/workspace/htmlunit/src/lib/commons-codec-1.7.jar"/>
+	<classpathentry kind="lib" path="/home/andy/workspace/htmlunit/src/lib/commons-collections-3.2.1.jar"/>
+	<classpathentry kind="lib" path="/home/andy/workspace/htmlunit/src/lib/commons-io-2.4.jar"/>
+	<classpathentry kind="lib" path="/home/andy/workspace/htmlunit/src/lib/commons-lang3-3.1.jar"/>
+	<classpathentry kind="lib" path="/home/andy/workspace/htmlunit/src/lib/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="/home/andy/workspace/htmlunit/src/lib/cssparser-0.9.9.jar"/>
+	<classpathentry kind="lib" path="/home/andy/workspace/htmlunit/src/lib/htmlunit-2.12.jar"/>
+	<classpathentry kind="lib" path="/home/andy/workspace/htmlunit/src/lib/htmlunit-core-js-2.12.jar"/>
+	<classpathentry kind="lib" path="/home/andy/workspace/htmlunit/src/lib/httpclient-4.2.3.jar"/>
+	<classpathentry kind="lib" path="/home/andy/workspace/htmlunit/src/lib/httpcore-4.2.2.jar"/>
+	<classpathentry kind="lib" path="/home/andy/workspace/htmlunit/src/lib/httpmime-4.2.3.jar"/>
+	<classpathentry kind="lib" path="/home/andy/workspace/htmlunit/src/lib/jetty-http-8.1.9.v20130131.jar"/>
+	<classpathentry kind="lib" path="/home/andy/workspace/htmlunit/src/lib/jetty-io-8.1.9.v20130131.jar"/>
+	<classpathentry kind="lib" path="/home/andy/workspace/htmlunit/src/lib/jetty-util-8.1.9.v20130131.jar"/>
+	<classpathentry kind="lib" path="/home/andy/workspace/htmlunit/src/lib/jetty-websocket-8.1.9.v20130131.jar"/>
+	<classpathentry kind="lib" path="/home/andy/workspace/htmlunit/src/lib/nekohtml-1.9.18.jar"/>
+	<classpathentry kind="lib" path="/home/andy/workspace/htmlunit/src/lib/sac-1.3.jar"/>
+	<classpathentry kind="lib" path="/home/andy/workspace/htmlunit/src/lib/serializer-2.7.1.jar"/>
+	<classpathentry kind="lib" path="/home/andy/workspace/htmlunit/src/lib/xalan-2.7.1.jar"/>
+	<classpathentry kind="lib" path="/home/andy/workspace/htmlunit/src/lib/xercesImpl-2.10.0.jar"/>
+	<classpathentry kind="lib" path="/home/andy/workspace/htmlunit/src/lib/xml-apis-1.4.01.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
