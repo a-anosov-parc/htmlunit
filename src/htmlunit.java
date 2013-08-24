@@ -1,3 +1,4 @@
+import java.util.regex.*;
 import java.util.logging.Level;
 
 import com.gargoylesoftware.htmlunit.BrowserVersion;
@@ -25,8 +26,27 @@ public class htmlunit {
 			webClient.setAjaxController(new NicelyResynchronizingAjaxController());
 			// Запрашиваем и рендерим веб-страницу
 			HtmlPage page = webClient.getPage(url);
+			// Даем время выполниться setTimeout в javascript
+			webClient.waitForBackgroundJavaScript(10000);
+			// Запоминаем doctype
+			Pattern doctypePattern = Pattern.compile("<!DOCTYPE((.|\n|\r)*?)>");
+			String sourceHtml = page.getWebResponse().getContentAsString();
+			Matcher doctypes = doctypePattern.matcher(sourceHtml);
+			doctypes.find();
+			String doctype = doctypes.group(0);
+			// Заменяем doctype xml на исходный
+			String resultXml = page.asXml();
+			resultXml = resultXml.replaceAll("<\\?((.|\n|\r)*?)\\?>", doctype);
+			// Убираем все теги script
+			resultXml = resultXml.replaceAll("<script\\b[^<]*(?:(?!<\\/script>)<[^<]*)*<\\/script>", "");
+			// Исправляем кривую замену тегов <i></i> на <i/>
+			Pattern inlineTagsPattern = Pattern.compile("(<i\\s.*)\\/>");
+			Matcher inlineTags = inlineTagsPattern.matcher(resultXml);
+			if (inlineTags.find()) {
+				resultXml = inlineTags.replaceAll("$1></i>");
+			}
 			// Выводим исходный код страницы в консоль
-			System.out.println(page.asXml());
+			System.out.println(resultXml);
 			// Закрываем headless-браузер, освобождаем память
 			webClient.closeAllWindows();
 		}
