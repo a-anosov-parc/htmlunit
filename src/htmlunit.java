@@ -35,17 +35,21 @@ public class htmlunit {
 			webClient.waitForBackgroundJavaScript(10000);
 			
 			// Запоминаем doctype
-			Pattern doctypePattern = Pattern.compile("<!DOCTYPE((.|\n|\r)*?)>");
+			Pattern doctypePattern = Pattern.compile("<!DOCTYPE((.|\n|\r)*?)>", Pattern.CASE_INSENSITIVE);
 			String sourceHtml = page.getWebResponse().getContentAsString();
 			Matcher doctypes = doctypePattern.matcher(sourceHtml);
-			doctypes.find();
-			String doctype = doctypes.group(0);
+			String doctype = "";
+			if (doctypes.find()) {
+				doctype = doctypes.group(0);
+			}
 			
 			// Получаем xml запрашиваемой страницы
 			String resultXml = page.asXml();
 			
 			// Заменяем doctype xml на исходный
-			resultXml = resultXml.replaceAll("<\\?((.|\n|\r)*?)\\?>", doctype);
+			if (doctype.length() > 0) {
+				resultXml = resultXml.replaceAll("<\\?((.|\n|\r)*?)\\?>", doctype);
+			}
 			
 			// Убираем все теги script
 			resultXml = resultXml.replaceAll("<script\\b[^<]*(?:(?!<\\/script>)<[^<]*)*<\\/script>", "");
@@ -71,7 +75,7 @@ public class htmlunit {
 				int replacementTagLength = replacementTag.length();
 				String fixedTag = new StringBuilder(replacementTag.substring(0, replacementTagLength - 2))
 								  .append("></").append(allMatchesTagNames.get(i)).append(">").toString();
-				resultXml = resultXml.replaceAll(replacementTag, fixedTag);
+				resultXml = resultXml.replace(replacementTag, fixedTag);
 			}
 			
 			// Выводим исходный код страницы в консоль
